@@ -1,0 +1,22 @@
+version: '3'
+services:
+  node-app:
+    build: 
+      context: .
+      args:
+        - NODE_DEV=development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_DEV=development
+      - MONGO_USERNAME=hyundev1406
+      - MONGO_PASSWORD=hyun2022
+      - JWT_SECRET=jwtsecret
+    
+    command: npm run dev
+
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=hyundev1406
+      - MONGO_INITDB_ROOT_PASSWORD=hyun2022
